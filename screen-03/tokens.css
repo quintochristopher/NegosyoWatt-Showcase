@@ -1,0 +1,121 @@
+/* NegosyoWatt — design system (light, minimalist)
+   Shared by every screen. Language borrowed from the reference UI:
+   flat green fills, white rounded cards, hairline borders, thin line icons. */
+
+:root {
+  /* Brand */
+  --green-700: #0B8A4B;
+  --green-600: #129D5A;
+  --green-500: #1FB26B;
+  --green-100: #DFF3E8;
+  --green-50:  #F0FAF4;
+  --grad-brand: var(--green-600); /* kept as a token name, now a flat colour */
+
+  /* Neutrals */
+  --ink-900: #1B2A22;
+  --ink-600: #5E6E65;
+  --ink-400: #98A59E;
+  --line:    #E5EAE7;
+  --surface: #FFFFFF;
+  --canvas:  #F1F3F2;
+
+  /* Status */
+  --warn: #E8A317;
+
+  /* Shape & depth */
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --r-pill: 999px;
+  --shadow-card: 0 0 0 1px var(--line);
+  --shadow-brand: none;
+
+  /* Type */
+  --font: "Poppins", -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --fs-title: 20px;
+  --fs-body: 14px;
+  --fs-small: 12px;
+  --fs-micro: 10px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: var(--font);
+  color: var(--ink-900);
+  background: var(--canvas);
+  -webkit-font-smoothing: antialiased;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+button { font: inherit; color: inherit; border: 0; background: none; cursor: pointer; }
+
+/* ---------- Phone frame (desktop preview only) ---------- */
+.phone {
+  position: relative;
+  width: 390px;
+  height: 844px;
+  background: var(--surface);
+  border-radius: 44px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px var(--line);
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 430px) {
+  body { display: block; background: var(--surface); }
+  .phone { width: 100%; height: 100vh; min-height: 720px; border-radius: 0; box-shadow: none; }
+}
+
+.statusbar {
+  height: 44px; padding: 0 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 13px; font-weight: 600; flex: none;
+}
+.statusbar .sys { display: flex; gap: 6px; align-items: center; }
+
+/* ---------- Components ---------- */
+.appbar {
+  height: 52px; padding: 0 16px; flex: none;
+  display: flex; align-items: center; gap: 8px;
+}
+.appbar h1 { font-size: 17px; font-weight: 600; flex: 1; }
+.icon-btn {
+  width: 36px; height: 36px; border-radius: 50%;
+  display: grid; place-items: center; color: var(--ink-900);
+}
+.icon-btn:hover { background: var(--canvas); }
+.icon-btn svg, .ico { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+.btn {
+  height: 52px; border-radius: var(--r-md); padding: 0 20px;
+  font-size: 15px; font-weight: 600;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+}
+.btn-primary { background: var(--grad-brand); color: #fff; box-shadow: var(--shadow-brand); }
+.btn-primary:active { transform: translateY(1px); }
+.btn-ghost { background: var(--surface); color: var(--ink-900); box-shadow: inset 0 0 0 1px var(--line); }
+
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 28px; padding: 0 12px; border-radius: var(--r-pill);
+  font-size: var(--fs-small); font-weight: 500;
+  background: var(--surface); box-shadow: var(--shadow-card);
+}
+.chip .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green-500); }
+
+.card { background: var(--surface); border-radius: var(--r-md); box-shadow: inset 0 0 0 1px var(--line); }
+
+/* ---------- Bottom navigation (shared) ---------- */
+.bottom-nav {
+  flex: none; height: 74px; padding: 8px 8px 14px;
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  background: var(--surface); border-top: 1px solid var(--line);
+}
+.bottom-nav a {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+  font-size: var(--fs-micro); font-weight: 500; color: var(--ink-400); text-decoration: none;
+}
+.bottom-nav a .ico { width: 22px; height: 22px; }
+.bottom-nav a.active { color: var(--green-600); font-weight: 600; }

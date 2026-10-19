@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>NegosyoWatt — Simulator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="screen-03-simulator.css">
+</head>
+<body>
+  <main class="phone">
+    <div class="statusbar">
+      <span>9:41</span>
+      <span class="sys">
+        <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+        <svg width="24" height="11" viewBox="0 0 24 11"><rect x=".5" y=".5" width="20" height="10" rx="3" fill="none" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="14" height="7" rx="1.8" fill="currentColor"/></svg>
+      </span>
+    </div>
+
+    <div class="scroll">
+      <header class="page-head">
+        <div>
+          <p class="eyebrow">Ana's Laundromat</p>
+          <h1>Simulator</h1>
+        </div>
+        <button class="add-btn"><svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New</button>
+      </header>
+
+      <div class="list-head">
+        <div><h2>Your scenarios</h2><p class="caption">Estimate: 444 kWh · ₱6,362.52 / mo</p></div>
+        <button class="sort">Saved<svg class="ico" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5"/></svg></button>
+      </div>
+
+      <div class="list">
+        <article class="scn">
+          <header>
+            <h3>Shorter dryer schedule</h3>
+            <span class="status planned">Planned</span>
+            <button class="star" aria-label="Star scenario" aria-pressed="false"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L12 17l-5.2 2.7 1-5.9L3.5 9.7l5.9-.8z"/></svg></button>
+            <button class="menu" aria-label="Scenario options"><svg class="ico" viewBox="0 0 24 24"><path d="M12 5h.01M12 12h.01M12 19h.01" stroke-width="2.6"/></svg></button>
+          </header>
+          <p class="desc">Ana is trying a small reduction in daily dryer hours and checking drying time and customer waits as the planned change takes effect.</p>
+
+          <div class="metrics">
+            <div class="m save"><span class="k">Est. savings</span><strong>₱472.89</strong><span class="sub">per month · ₱5,674.68 / yr</span></div>
+            <div class="m"><span class="k">Power use</span><strong>411 kWh</strong><span class="sub">−33 kWh · −7.4%</span></div>
+          </div>
+          <div class="compare">
+            <div class="track"><i style="width:92.6%"></i></div>
+            <p><span>New estimate ₱5,889.63</span><span>Now ₱6,362.52</span></p>
+          </div>
+
+          <div class="cfg-head"><span>Appliance change</span><span>1 appliance</span></div>
+          <ul class="cfgs first">
+            <li class="cfg">
+              <span class="tile"><svg class="ico" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="3"/><circle cx="12" cy="13.5" r="5"/><circle cx="12" cy="13.5" r="1.6"/><path d="M7.5 6.5h.01M10.5 6.5h.01"/></svg></span>
+              <div class="what"><b>Dryer · 2,200 W</b><span><s>4 h/day</s><svg class="ico arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>3.5 h/day</span></div>
+              <span class="delta">−₱472.89</span>
+            </li>
+          </ul>
+        </article>
+      </div>
+
+      <p class="foot">This scenario projects savings from appliance-use assumptions, not from the 200 kWh bill total. The appliance estimate is higher than billed consumption; verify inputs before relying on either estimate. Planned savings are not results.</p>
+    </div>
+
+    <nav class="bottom-nav" aria-label="Main">
+      <a href="#"><svg class="ico" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9H4z"/><path d="M10 20v-6h4v6"/></svg>Home</a>
+      <a href="#"><svg class="ico" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg>Bills</a>
+      <a href="#"><svg class="ico" viewBox="0 0 24 24"><path d="M9 3v5M15 3v5"/><path d="M6 8h12v3a6 6 0 0 1-12 0z"/><path d="M12 17v4"/></svg>Appliances</a>
+      <a href="#" class="active"><svg class="ico" viewBox="0 0 24 24"><path d="M5 6h14M5 12h14M5 18h14"/><circle cx="9" cy="6" r="2" fill="var(--surface)"/><circle cx="15" cy="12" r="2" fill="var(--surface)"/><circle cx="8" cy="18" r="2" fill="var(--surface)"/></svg>Simulator</a>
+      <a href="#"><svg class="ico" viewBox="0 0 24 24"><path d="M5 20V10M12 20V4M19 20v-7"/></svg>Reports</a>
+    </nav>
+  </main>
+  <script>
+    var star = document.querySelector('.star');
+    star.addEventListener('click', function () {
+      var on = star.getAttribute('aria-pressed') !== 'true';
+      star.setAttribute('aria-pressed', on);
+      star.setAttribute('aria-label', on ? 'Unstar scenario' : 'Star scenario');
+    });
+  </script>
+</body>
+</html>

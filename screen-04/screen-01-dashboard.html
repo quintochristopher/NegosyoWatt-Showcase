@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>NegosyoWatt — Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="screen-01-dashboard.css">
+</head>
+<body>
+  <main class="phone">
+
+    <div class="statusbar">
+      <span>9:41</span>
+      <span class="sys">
+        <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+        <svg width="24" height="11" viewBox="0 0 24 11"><rect x=".5" y=".5" width="20" height="10" rx="3" fill="none" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="14" height="7" rx="1.8" fill="currentColor"/></svg>
+      </span>
+    </div>
+
+    <div class="scroll">
+      <header class="page-head">
+        <div>
+          <p class="eyebrow">NEGOSYOWATT</p>
+          <h1>Good morning, Ana!</h1>
+        </div>
+        <button class="avatar" aria-label="Profile and business settings">M</button>
+      </header>
+
+      <!-- Overview -->
+      <section aria-labelledby="h-overview">
+        <div class="sec-head">
+          <div><h2 id="h-overview">Your electricity overview</h2><p class="caption">Ana's Laundromat · Quezon City</p></div>
+        </div>
+
+        <div class="hero">
+          <div class="hero-top"><span class="k">Latest electricity bill · May</span><span class="tag on-dark">Actual</span></div>
+          <strong class="big">₱2,866.90</strong>
+          <div class="hero-meta">
+            <div><b>200 kWh</b><span>Latest consumption</span></div>
+            <div><b>₱14.33</b><span>Rate per kWh</span></div>
+            <div><b>Apr 7–May 6</b><span>Billing period</span></div>
+          </div>
+        </div>
+
+        <div class="pair">
+          <div class="mc est">
+            <header><span class="k">Estimated appliance costs</span><span class="tag est">Estimated</span></header>
+            <strong>₱6,362.52</strong>
+            <span class="sub">444 kWh · estimated from appliance use</span>
+            <div class="track" aria-hidden="true"><i style="width:100%"></i></div>
+          </div>
+          <div class="mc proj">
+            <header><span class="k">Potential monthly savings</span><span class="tag proj">Projected</span></header>
+            <strong>₱472.89</strong>
+            <span class="sub">projected per month · planned scenario</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bill history -->
+      <section aria-labelledby="h-trend">
+        <div class="sec-head">
+          <div><h2 id="h-trend">Bill history</h2><p class="caption">Actual bills entered</p></div>
+          <span class="tag actual">1 bill</span>
+        </div>
+        <div class="card bill-history">
+          <div class="bill-period">
+            <span class="period-icon"><svg class="ico" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span>
+            <div class="period-info"><b>May 2026</b><span>Apr 7 – May 6 billing period · 200 kWh</span></div>
+            <strong>₱2,866.90</strong>
+          </div>
+          <p class="note">This is the first bill entered. Add another billing period to compare actual expenses over time.</p>
+        </div>
+      </section>
+
+      <!-- Quick actions -->
+      <section aria-labelledby="h-actions">
+        <div class="sec-head"><h2 id="h-actions">Quick actions</h2></div>
+        <nav class="actions" aria-label="Quick actions">
+          <a href="#" class="act primary"><span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>Add electricity bill</a>
+          <a href="#" class="act"><span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M9 3v5M15 3v5"/><path d="M6 8h12v3a6 6 0 0 1-12 0z"/><path d="M12 17v4"/></svg></span>Manage appliances</a>
+          <a href="#" class="act"><span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M5 6h14M5 12h14M5 18h14"/><circle cx="9" cy="6" r="2" fill="var(--green-50)"/><circle cx="15" cy="12" r="2" fill="var(--green-50)"/><circle cx="8" cy="18" r="2" fill="var(--green-50)"/></svg></span>Simulate savings</a>
+          <a href="#" class="act"><span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M5 20V10M12 20V4M19 20v-7"/></svg></span>View reports</a>
+        </nav>
+      </section>
+
+      <!-- Highest-cost appliances -->
+      <section aria-labelledby="h-ap">
+        <div class="sec-head">
+          <div><h2 id="h-ap">Highest-cost appliances</h2><p class="caption">Monthly cost, calculated from usage</p></div>
+          <span class="tag est">Estimated</span>
+        </div>
+        <div class="card">
+          <ul class="ap">
+            <li>
+              <span class="tile"><svg class="ico" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="3"/><circle cx="12" cy="13.5" r="5"/><circle cx="12" cy="13.5" r="1.6"/><path d="M7.5 6.5h.01M10.5 6.5h.01"/></svg></span>
+              <div class="what"><b>Dryer</b><span>1 × 2,200 W · 4 h/day</span></div>
+              <div class="amt"><b>₱3,783.12</b><span>59% of estimate</span></div>
+              <div class="track" aria-hidden="true"><i style="width:100%"></i></div>
+            </li>
+            <li>
+              <span class="tile"><svg class="ico" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="3"/><circle cx="12" cy="13.5" r="5"/><path d="M9.2 13.8c.9-1 1.9-1 2.8 0s1.9 1 2.8 0"/><path d="M7.5 6.5h.01M10.5 6.5h.01"/></svg></span>
+              <div class="what"><b>Washing machines</b><span>3 × 400 W · 3 h/day</span></div>
+              <div class="amt"><b>₱1,547.64</b><span>24% of estimate</span></div>
+              <div class="track" aria-hidden="true"><i style="width:40.9%"></i></div>
+            </li>
+            <li>
+              <span class="tile"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1.5"/><g><path d="M12 10.5C10.8 7 11 4.6 13.2 4c2 .6 1.8 3.6-.2 6.3"/></g><g transform="rotate(120 12 12)"><path d="M12 10.5C10.8 7 11 4.6 13.2 4c2 .6 1.8 3.6-.2 6.3"/></g><g transform="rotate(240 12 12)"><path d="M12 10.5C10.8 7 11 4.6 13.2 4c2 .6 1.8 3.6-.2 6.3"/></g><path d="M12 15v6M8.5 21h7"/></svg></span>
+              <div class="what"><b>Electric fans</b><span>2 × 60 W · 12 h/day</span></div>
+              <div class="amt"><b>₱619.06</b><span>10% of estimate</span></div>
+              <div class="track" aria-hidden="true"><i style="width:16.4%"></i></div>
+            </li>
+          </ul>
+          <p class="note">Illustrative figures, not measured costs.</p>
+        </div>
+      </section>
+
+      <p class="foot"><b>Actual</b> amounts come from your bills. <b>Estimated</b> costs are calculated from appliance ratings and usage assumptions. Here, estimated appliance use is 444 kWh while the bill records 200 kWh; review the assumptions. <b>Projected</b> savings are not results.</p>
+    </div>
+
+    <nav class="bottom-nav" aria-label="Main"><a href="#" class="active"><svg class="ico" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9H4z"/><path d="M10 20v-6h4v6"/></svg>Home</a><a href="#"><svg class="ico" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg>Bills</a><a href="#"><svg class="ico" viewBox="0 0 24 24"><path d="M9 3v5M15 3v5"/><path d="M6 8h12v3a6 6 0 0 1-12 0z"/><path d="M12 17v4"/></svg>Appliances</a><a href="#"><svg class="ico" viewBox="0 0 24 24"><path d="M5 6h14M5 12h14M5 18h14"/><circle cx="9" cy="6" r="2" fill="var(--surface)"/><circle cx="15" cy="12" r="2" fill="var(--surface)"/><circle cx="8" cy="18" r="2" fill="var(--surface)"/></svg>Simulator</a><a href="#"><svg class="ico" viewBox="0 0 24 24"><path d="M5 20V10M12 20V4M19 20v-7"/></svg>Reports</a></nav>
+  </main>
+
+</body>
+</html>

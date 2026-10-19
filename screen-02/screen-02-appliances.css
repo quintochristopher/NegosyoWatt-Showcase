@@ -1,0 +1,87 @@
+/* Screen 2 — Appliance list (laundromat) */
+
+.phone { position: relative; }
+.scroll { flex: 1; min-height: 0; overflow-y: auto; padding: 0 16px 24px; scrollbar-width: none; }
+.scroll::-webkit-scrollbar { display: none; }
+
+/* ---------- Header ---------- */
+.page-head { display: flex; align-items: center; justify-content: space-between; padding: 6px 0 14px; }
+.eyebrow { font-size: var(--fs-small); color: var(--green-600); font-weight: 600; }
+.page-head h1 { font-size: 24px; font-weight: 600; line-height: 1.2; }
+
+/* ---------- List header ---------- */
+.list-head { display: flex; align-items: flex-end; justify-content: space-between; margin: 4px 0 12px; }
+.caption { font-size: 11px; color: var(--ink-400); margin-top: 2px; }
+.list-head h2 { font-size: 16px; font-weight: 600; }
+.sort { display: inline-flex; align-items: center; gap: 2px; font-size: var(--fs-small); font-weight: 600; color: var(--green-600); }
+.sort .ico { width: 16px; height: 16px; }
+.estimate-note {
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border-radius: var(--r-sm);
+  background: #FCF4E1;
+  color: #79540C;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* ---------- Appliance cards ---------- */
+.list { display: flex; flex-direction: column; gap: 12px; }
+.appl {
+  background: var(--surface); border-radius: var(--r-md); padding: 14px;
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.appl header { display: flex; align-items: center; gap: 12px; position: relative; }
+.tile {
+  width: 46px; height: 46px; border-radius: 14px; flex: none;
+  display: grid; place-items: center; background: var(--green-50); color: var(--green-600);
+  box-shadow: inset 0 0 0 1px var(--green-100);
+}
+.tile .ico { width: 26px; height: 26px; stroke-width: 1.6; }
+.who { flex: 1; min-width: 0; }
+.who h3 { font-size: 14.5px; font-weight: 600; line-height: 1.25; }
+.who p { font-size: var(--fs-small); color: var(--ink-600); margin-top: 1px; }
+.more { width: 28px; height: 28px; margin-right: -6px; border-radius: 50%; display: grid; place-items: center; color: var(--ink-400); flex: none; }
+.more .ico { width: 18px; height: 18px; }
+
+.badge {
+  position: absolute; right: 26px; top: -2px; display: inline-flex; align-items: center; gap: 4px;
+  height: 22px; padding: 0 9px; border-radius: var(--r-pill); font-size: 10.5px; font-weight: 600; white-space: nowrap;
+}
+.badge .ico { width: 12px; height: 12px; stroke-width: 2; }
+.major-b { background: #FFF1CC; color: #8A5A00; }
+.high-b  { background: #FFF6DE; color: #9A6A00; box-shadow: inset 0 0 0 1px #F6E3AE; }
+
+.stats { display: grid; grid-template-columns: 1fr 1.1fr 1.2fr; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); }
+.stats dt { font-size: 10px; color: var(--ink-400); }
+.stats dd { font-size: 13px; font-weight: 600; margin-top: 2px; }
+.stats .cost dd { color: var(--green-700); font-size: 14.5px; }
+
+.share { display: flex; align-items: center; gap: 10px; margin-top: 12px; }
+.bar { flex: 1; height: 6px; border-radius: 6px; background: var(--canvas); overflow: hidden; }
+.bar i { display: block; height: 100%; width: var(--share); border-radius: 6px; background: var(--green-500); opacity: .55; }
+.share span { font-size: 11px; color: var(--ink-600); font-weight: 500; min-width: 74px; text-align: right; }
+
+/* High use: fuller bar */
+.appl.high .bar i { opacity: .85; }
+
+/* Major expense: filled flat-green card (same treatment as the selected tile in the reference) */
+.appl.major { background: var(--green-600); color: #fff; box-shadow: none; position: relative; overflow: hidden; }
+.appl.major .tile { background: rgba(255,255,255,.18); color: #fff; box-shadow: inset 0 0 0 1px rgba(255,255,255,.3); }
+.appl.major .who p, .appl.major .stats dt, .appl.major .share span { color: rgba(255,255,255,.85); }
+.appl.major .more { color: rgba(255,255,255,.85); }
+.appl.major .stats { border-top-color: rgba(255,255,255,.25); }
+.appl.major .stats .cost dd { color: #fff; }
+.appl.major .bar { background: rgba(255,255,255,.25); }
+.appl.major .bar i { background: #fff; opacity: 1; }
+.appl.major .badge { background: #FFF1CC; }
+
+/* ---------- Header add button ---------- */
+.head-actions { display: flex; align-items: center; gap: 6px; }
+.add-btn {
+  height: 38px; padding: 0 16px 0 12px; border-radius: var(--r-pill);
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--grad-brand); color: #fff; font-size: 13.5px; font-weight: 600;
+  box-shadow: var(--shadow-brand);
+}
+.add-btn .ico { width: 18px; height: 18px; stroke-width: 2.4; }

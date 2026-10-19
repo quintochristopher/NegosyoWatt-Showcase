@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f1f3f2" />
+    <meta
+      name="description"
+      content="Follow Ana's laundromat as NegosyoWatt helps her understand, test, and monitor electricity costs."
+    />
+    <title>NegosyoWatt — A clearer way to manage energy costs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    />
+    <link rel="stylesheet" href="showcase.css" />
+  </head>
+  <body>
+    <main id="top">
+      <section class="intro" aria-labelledby="intro-title">
+        <a class="brand" href="#top" aria-label="NegosyoWatt home">
+          <span class="brand-mark"
+            ><img src="screen-01/assets/negosyowatt_logo.png" alt=""
+          /></span>
+          <span>Negosyo<span>Watt</span></span>
+        </a>
+        <h1 id="intro-title">
+          A little more clarity.<br /><span>A lot more control.</span>
+        </h1>
+        <p class="intro-copy">
+          Follow Ana through the first weeks of understanding her laundromat’s
+          electricity costs—with useful estimates, practical scenarios, and real
+          bills kept in their place.
+        </p>
+        <a class="start-link" href="#day-1">Follow Ana’s story</a>
+      </section>
+
+      <div class="journey">
+        <div class="story-column" aria-label="Ana's NegosyoWatt journey">
+          <article
+            class="story-step is-active"
+            id="day-1"
+            data-screen="screen-01/screen-01-scan.html"
+            data-label="1 of 4 · Bill setup"
+          >
+            <p class="step-label"><span>01</span> Day 1 · Getting Started</p>
+            <h2>Start with the bill,<br />not a spreadsheet.</h2>
+            <p>
+              Ana registers her laundromat and enters her latest electricity
+              bill. She adds the appliances she relies on: washing machines, a
+              dryer, lights, and fans.
+            </p>
+            <div
+              class="bill-summary"
+              aria-label="Latest electricity bill details"
+            >
+              <div><span>Total bill</span><strong>₱2,866.90</strong></div>
+              <div><span>Consumption</span><strong>200 kWh</strong></div>
+              <div><span>Rate</span><strong>₱14.33 / kWh</strong></div>
+            </div>
+            <p class="step-note">
+              NegosyoWatt uses appliance ratings and usage assumptions to
+              estimate operating costs—not to replace the actual bill.
+            </p>
+          </article>
+
+          <article
+            class="story-step"
+            id="day-2"
+            data-screen="screen-02/screen-02-appliances.html"
+            data-label="2 of 4 · Appliance costs"
+          >
+            <p class="step-label">
+              <span>02</span> Day 2 · Finding the Drivers
+            </p>
+            <h2>See where the<br />estimate adds up.</h2>
+            <p>
+              On her appliance list, Ana can compare estimated monthly energy
+              use and cost. The dryer stands out: its 2,200 W rating and four
+              hours of daily use add up to about 264 kWh—or ₱3,783.12 a month at
+              her current rate.
+            </p>
+            <p class="step-note">
+              Her appliance estimates total 444 kWh, more than the 200 kWh on
+              her bill. She checks the ratings and usage assumptions before
+              relying on the estimate.
+            </p>
+          </article>
+
+          <article
+            class="story-step"
+            id="day-3"
+            data-screen="screen-03/screen-03-simulator.html"
+            data-label="3 of 4 · A planned change"
+          >
+            <p class="step-label">
+              <span>03</span> Days 3–4 · Testing a Change
+            </p>
+            <h2>Try a change<br />before committing.</h2>
+            <p>
+              Ana tests a shorter dryer schedule in the simulator. Reducing
+              estimated use from four hours to three and a half projects about
+              ₱472.89 in monthly savings.
+            </p>
+            <p class="step-note">
+              She weighs that estimate against drying time and customer waits,
+              then puts the change into practice. She records it as
+              <b>planned</b>—the projected savings remain an estimate until
+              future bills show what changed.
+            </p>
+          </article>
+
+          <article
+            class="story-step"
+            id="day-5"
+            data-screen="screen-04/screen-01-dashboard.html"
+            data-label="4 of 4 · Actual bill trends"
+          >
+            <p class="step-label">
+              <span>04</span> Day 5 and Beyond · Keeping Track
+            </p>
+            <h2>Let real bills<br />tell the story.</h2>
+            <p>
+              Ana keeps entering her bills and compares actual expenses across
+              billing periods. Over time, she can see whether costs changed
+              after her operational adjustment.
+            </p>
+            <p class="step-note">
+              Actual bills, appliance estimates, and projected scenario savings
+              stay clearly separated—so the next decision is based on better
+              information.
+            </p>
+          </article>
+        </div>
+
+        <aside class="screen-column" aria-label="NegosyoWatt app screens">
+          <div class="screen-sticky">
+            <div class="screen-viewport">
+              <iframe
+                id="screen-frame"
+                src="screen-01/screen-01-scan.html"
+                title="NegosyoWatt screen: bill setup"
+                loading="eager"
+              >
+              </iframe>
+            </div>
+            <p class="screen-hint">
+              <span aria-hidden="true">↕</span> Scroll inside the screen to
+              explore
+            </p>
+          </div>
+        </aside>
+      </div>
+
+      <section class="closing">
+        <div>
+          <p class="eyebrow">The Everyday Benefit</p>
+          <h2>Make a clearer call on electricity costs.</h2>
+          <p>
+            No complex electrical calculations required. Just your bills, your
+            appliances, and decisions that fit your business.
+          </p>
+        </div>
+        <a class="back-top" href="#top">Back to top</a>
+      </section>
+    </main>
+
+    <script src="showcase.js"></script>
+  </body>
+</html>

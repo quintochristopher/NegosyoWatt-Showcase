@@ -1,0 +1,141 @@
+/* Screen 1 — Main dashboard (flat, no gradients, hairline borders)
+   Data-type language used on every card:
+   Actual    = solid, from the user's bills
+   Estimated = grey, calculated from registered appliances
+   Projected = dashed outline, from saved scenarios (not guaranteed) */
+
+:root {
+  --warn-bg: #FCF4E1;
+  --warn-ink: #8A5A00;
+}
+
+.scroll { flex: 1; min-height: 0; overflow-y: auto; padding: 0 16px 24px; scrollbar-width: none; }
+.scroll::-webkit-scrollbar { display: none; }
+
+/* ---------- Header ---------- */
+.page-head { display: flex; align-items: center; justify-content: space-between; padding: 6px 0 16px; }
+.eyebrow { font-size: var(--fs-small); color: var(--green-600); font-weight: 600; letter-spacing: .02em; }
+.page-head h1 { font-size: 24px; font-weight: 600; line-height: 1.2; }
+.avatar {
+  width: 40px; height: 40px; border-radius: 50%; flex: none;
+  display: grid; place-items: center;
+  background: var(--green-50); color: var(--green-700);
+  box-shadow: inset 0 0 0 1px var(--green-100);
+  font-size: 15px; font-weight: 600;
+}
+
+/* ---------- Section headings ---------- */
+section + section { margin-top: 24px; }
+.sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; margin-bottom: 10px; }
+.sec-head h2 { font-size: 16px; font-weight: 600; }
+.caption { font-size: 11px; color: var(--ink-400); margin-top: 2px; }
+.link { white-space: nowrap; flex: none; display: inline-flex; align-items: center; gap: 2px; font-size: var(--fs-small); font-weight: 600; color: var(--green-600); }
+.link .ico { width: 16px; height: 16px; }
+
+/* ---------- Data-type tags ---------- */
+.tag { height: 20px; padding: 0 8px; border-radius: var(--r-pill); font-size: 10px; font-weight: 600; display: inline-flex; align-items: center; flex: none; white-space: nowrap; }
+.tag.actual { background: var(--green-100); color: var(--green-700); }
+.tag.est { background: var(--surface); color: var(--ink-600); box-shadow: inset 0 0 0 1px var(--line); }
+.tag.proj { color: var(--green-700); box-shadow: inset 0 0 0 1px var(--green-500); }
+.tag.on-dark { background: rgba(255,255,255,.18); color: #fff; }
+
+/* ---------- Overview ---------- */
+.hero { background: var(--green-700); color: #fff; border-radius: var(--r-md); padding: 16px 16px 14px; }
+.hero-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.hero .k { font-size: 12px; font-weight: 500; }
+.hero .big { display: block; font-size: 34px; font-weight: 600; line-height: 1.2; margin-top: 6px; letter-spacing: -.01em; }
+.hero-meta { display: grid; grid-template-columns: repeat(3, auto); justify-content: space-between; gap: 8px; margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.25); }
+.hero-meta b { display: block; font-size: 14px; font-weight: 600; }
+.hero-meta span { display: block; font-size: 10.5px; margin-top: 1px; color: var(--green-100); }
+
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+.mc { border-radius: var(--r-md); padding: 12px 12px 12px; display: flex; flex-direction: column; min-width: 0; }
+.mc header { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+.mc .k { font-size: 11px; color: var(--ink-600); line-height: 1.3; }
+.mc strong { font-size: 19px; font-weight: 600; margin-top: 8px; line-height: 1.25; }
+.mc .sub { font-size: 10.5px; color: var(--ink-600); margin-top: 2px; }
+.mc.est { background: var(--canvas); }
+.mc.proj { background: var(--green-50); border: 1px dashed var(--green-500); }
+.mc.proj strong { color: var(--green-700); }
+.track { height: 6px; border-radius: 6px; background: var(--line); overflow: hidden; margin-top: 10px; }
+.track i { display: block; height: 100%; border-radius: 6px; background: var(--green-500); }
+
+/* ---------- Quick actions ---------- */
+.actions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.act { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; font-size: 11px; font-weight: 500; line-height: 1.3; color: var(--ink-900); text-decoration: none; padding: 2px 0; }
+.act .tile { width: 52px; height: 52px; border-radius: var(--r-md); display: grid; place-items: center; background: var(--green-50); color: var(--green-600); box-shadow: inset 0 0 0 1px var(--green-100); }
+.act .tile .ico { width: 24px; height: 24px; stroke-width: 1.7; }
+.act.primary .tile { background: var(--green-600); color: #fff; box-shadow: none; }
+.act.primary .tile .ico { stroke-width: 2.2; }
+.act:active .tile { transform: translateY(1px); }
+
+/* ---------- Cards ---------- */
+.card { padding: 14px; }
+
+.bill-history .bill-period { display: flex; align-items: center; gap: 10px; }
+.period-icon {
+  width: 36px; height: 36px; flex: none;
+  display: grid; place-items: center;
+  border-radius: 10px; background: var(--green-50); color: var(--green-600);
+  box-shadow: inset 0 0 0 1px var(--green-100);
+}
+.period-icon .ico { width: 20px; height: 20px; }
+.period-info { display: flex; flex: 1; min-width: 0; flex-direction: column; }
+.period-info b { font-size: 13px; font-weight: 600; }
+.period-info span { color: var(--ink-600); font-size: 10.5px; }
+.bill-period > strong { flex: none; font-size: 14px; font-weight: 600; }
+
+/* Electricity expenses */
+.exp { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.exp .k { font-size: 11px; color: var(--ink-600); }
+.exp strong { display: block; font-size: 20px; font-weight: 600; margin-top: 2px; line-height: 1.3; }
+.exp .prev strong { color: var(--ink-600); }
+.exp .track { margin-top: 8px; }
+.exp .prev .track i { background: var(--ink-400); }
+.diff { display: flex; align-items: center; gap: 8px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); }
+.pill-warn { height: 26px; padding: 0 10px 0 8px; border-radius: var(--r-pill); background: var(--warn-bg); color: var(--warn-ink); font-size: 12px; font-weight: 600; display: inline-flex; align-items: center; gap: 3px; flex: none; }
+.pill-warn .ico { width: 14px; height: 14px; stroke-width: 2.4; }
+.diff p { font-size: 11.5px; line-height: 1.4; color: var(--ink-600); }
+
+/* Highest-cost appliances */
+.ap { list-style: none; }
+.ap li { display: grid; grid-template-columns: 34px 1fr auto; column-gap: 10px; align-items: center; padding: 11px 0; border-bottom: 1px solid var(--line); }
+.ap li:first-child { padding-top: 0; }
+.ap li:last-child { border-bottom: 0; padding-bottom: 0; }
+.ap .tile { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: var(--green-50); color: var(--green-600); box-shadow: inset 0 0 0 1px var(--green-100); grid-row: 1 / span 2; }
+.ap .tile .ico { width: 20px; height: 20px; stroke-width: 1.7; }
+.ap .what { display: flex; flex-direction: column; min-width: 0; }
+.ap .what b { font-size: 13px; font-weight: 600; }
+.ap .what span { font-size: 11.5px; color: var(--ink-600); margin-top: 1px; }
+.ap .amt { text-align: right; display: flex; flex-direction: column; }
+.ap .amt b { font-size: 13.5px; font-weight: 600; }
+.ap .amt span { font-size: 10.5px; color: var(--ink-400); margin-top: 1px; }
+.ap .track { grid-column: 2 / span 2; margin-top: 8px; height: 5px; }
+.note { font-size: 11px; color: var(--ink-400); margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line); line-height: 1.45; }
+
+/* Monthly trends */
+.trend-chip { height: 24px; padding: 0 10px 0 7px; border-radius: var(--r-pill); background: var(--warn-bg); color: var(--warn-ink); font-size: 11px; font-weight: 600; display: inline-flex; align-items: center; gap: 3px; flex: none; }
+.trend-chip .ico { width: 13px; height: 13px; stroke-width: 2.4; }
+.chart { position: relative; margin: 6px -4px 0; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; touch-action: pan-y; }
+.chart text { font-family: var(--font); }
+.ax { font-size: 10px; fill: var(--ink-400); }
+.vl { font-size: 11px; font-weight: 600; fill: var(--ink-900); }
+.grid-l { stroke: var(--line); stroke-width: 1; }
+.area { fill: var(--green-50); }
+.ln { fill: none; stroke: var(--green-600); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.dot { fill: var(--green-600); stroke: var(--surface); stroke-width: 2; transition: r .12s; }
+.hit { fill: transparent; cursor: pointer; }
+.guide { stroke: var(--ink-400); stroke-width: 1; stroke-dasharray: 3 3; opacity: 0; }
+.chart.on .guide { opacity: 1; }
+.tip {
+  position: absolute; top: 0; z-index: 2; pointer-events: none; opacity: 0; transform: translate(-50%, -100%);
+  background: var(--ink-900); color: #fff; border-radius: 10px; padding: 7px 10px; white-space: nowrap;
+  font-size: 11px; line-height: 1.4; transition: opacity .12s;
+}
+.tip b { display: block; font-size: 12.5px; font-weight: 600; }
+.tip span { color: #cfd8d3; }
+.chart.on .tip { opacity: 1; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.foot { font-size: 11px; line-height: 1.5; color: var(--ink-400); text-align: center; padding: 20px 12px 0; }

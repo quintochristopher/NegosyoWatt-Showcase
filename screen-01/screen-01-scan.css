@@ -1,0 +1,114 @@
+/* Screen 1 — Scan electricity bill */
+
+/* ---------- Viewfinder ---------- */
+.viewfinder {
+  position: relative; flex: none; height: 300px;
+  background: linear-gradient(180deg, #E9EEEB 0%, #F4F6F5 100%);
+  overflow: hidden;
+}
+.viewfinder .chip { position: absolute; top: 4px; left: 50%; transform: translateX(-50%); z-index: 5; }
+
+/* Corner brackets */
+.bracket { position: absolute; width: 22px; height: 22px; border: 3px solid var(--green-500); z-index: 4; }
+.bracket.tl { top: 38px; left: 10px;  border-right: 0; border-bottom: 0; border-top-left-radius: 10px; }
+.bracket.tr { top: 38px; right: 10px; border-left: 0;  border-bottom: 0; border-top-right-radius: 10px; }
+.bracket.bl { bottom: 8px; left: 10px;  border-right: 0; border-top: 0;    border-bottom-left-radius: 10px; }
+.bracket.br { bottom: 8px; right: 10px; border-left: 0;  border-top: 0;    border-bottom-right-radius: 10px; }
+
+/* The photo strip: shows the middle ~52% of the bill, where the key fields are */
+.strip {
+  position: absolute; left: 50%; top: 70px; width: min(100%, 390px); transform: translateX(-50%);
+  aspect-ratio: 2376 / 1005; /* shows 18%–70% of the bill photo */
+  box-shadow: 0 6px 22px rgba(20, 40, 30, .16);
+}
+.strip .photo { position: absolute; inset: 0; overflow: hidden; background: #fff; }
+.strip .photo img { position: absolute; left: 0; top: 0; width: 100%; display: block; transform: translateY(-18%); }
+
+/* Moving scan line */
+.scanline {
+  position: absolute; left: 0; right: 0; height: 2px; z-index: 3;
+  background: linear-gradient(90deg, transparent, var(--green-500), transparent);
+  box-shadow: 0 0 14px 3px rgba(31, 178, 107, .45);
+  animation: sweep 3.2s ease-in-out infinite;
+}
+@keyframes sweep { 0%, 100% { top: 0; opacity: 0; } 10%, 90% { opacity: 1; } 50% { top: 100%; } }
+
+/* ---------- Scanner boxes + extracted-text tags ---------- */
+.field { position: absolute; z-index: 4; animation: pop .45s cubic-bezier(.2,.9,.3,1.3) both; animation-delay: var(--d, 0s); }
+@keyframes pop { from { opacity: 0; transform: scale(.92); } to { opacity: 1; transform: scale(1); } }
+
+.field .box {
+  position: absolute; inset: -3px -4px;
+  border: 2px solid var(--green-500); border-radius: 5px;
+  background: rgba(31, 178, 107, .12);
+}
+.field .tag {
+  position: absolute; white-space: nowrap;
+  background: var(--surface); border-radius: 8px; padding: 3px 6px 4px;
+  box-shadow: 0 2px 10px rgba(20, 40, 30, .16), inset 0 0 0 1px var(--green-100);
+  line-height: 1.15;
+}
+.tag small { display: flex; align-items: center; gap: 4px; font-size: 8px; font-weight: 500; color: var(--ink-600); letter-spacing: .02em; }
+.tag small b {
+  width: 12px; height: 12px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--green-500); color: #fff; font-size: 8px; font-weight: 600;
+}
+.tag strong { display: block; font-size: 10.5px; font-weight: 600; color: var(--green-700); margin-top: 1px; }
+/* leader line from tag to box */
+.tag::after { content: ""; position: absolute; left: 14px; width: 0; border-left: 1.5px dashed var(--green-500); }
+.tag.above { bottom: calc(100% + 8px); left: var(--tx, 0); }
+.tag.above::after { top: 100%; height: var(--ll, 8px); }
+.tag.below { top: calc(100% + 8px); left: var(--tx, 0); }
+.tag.below::after { bottom: 100%; height: var(--ll, 8px); }
+
+/* Field positions (percent of the cropped photo strip) */
+.f-period { left: 2.5%; top: 16.5%; width: 24.8%; height: 12.3%; }
+.f-date   { left: 32.5%; top: 16.5%; width: 11.6%; height: 12.3%; --tx: -5px; }
+.f-can    { left: 50.6%; top: 11.3%; width: 24.9%; height: 15.4%; --tx: 3px; }
+.f-pay    { left: 52.0%; top: 43.5%; width: 18.3%; height: 10.4%; --tx: -2px; --ll: 84px; }
+.f-kwh    { left: 32.5%; top: 75.8%; width: 14.2%; height: 10.0%; --tx: -14px; --ll: 8px; }
+.f-rate   { left: 2.8%; top: 75.8%; width: 14.5%; height: 10.0%; --tx: -2px; --ll: 8px; }
+.f-period .tag { --tx: -1px; }
+.f-kwh .tag { top: calc(100% + 30px); } .f-kwh .tag::after { height: 30px; }
+.f-rate .tag { top: calc(100% + 8px); }
+.f-pay .tag { top: calc(100% + 76px); } .f-pay .tag::after { height: 76px; }
+
+/* ---------- Results sheet ---------- */
+.sheet {
+  flex: 1; min-height: 0; display: flex; flex-direction: column;
+  background: var(--surface); border-radius: 26px 26px 0 0; margin-top: -2px;
+  box-shadow: 0 -10px 30px rgba(20, 40, 30, .08); position: relative; z-index: 6;
+  padding: 8px 16px 18px;
+}
+.grab { width: 36px; height: 4px; border-radius: 4px; background: var(--line); margin: 0 auto 10px; }
+.sheet-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.sheet-head h2 { font-size: 16px; font-weight: 600; }
+.sheet-head p { font-size: var(--fs-small); color: var(--ink-600); }
+.retake { color: var(--green-600); font-size: var(--fs-small); font-weight: 600; display: inline-flex; align-items: center; gap: 4px; }
+.retake .ico { width: 15px; height: 15px; }
+
+.rows { flex: none; }
+.row {
+  display: flex; align-items: center; gap: 10px; height: 39px;
+  border-bottom: 1px solid var(--line); font-size: 13px;
+}
+.row:last-child { border-bottom: 0; }
+.row .num { width: 18px; height: 18px; border-radius: 50%; background: var(--green-100); color: var(--green-700); font-size: 10px; font-weight: 600; display: grid; place-items: center; flex: none; }
+.row .label { color: var(--ink-600); flex: 1; }
+.row .value { font-weight: 600; text-align: right; }
+.row .value em { font-style: normal; font-weight: 400; color: var(--ink-400); font-size: 11px; display: block; line-height: 1; margin-top: 1px; }
+.row .edit { color: var(--ink-400); }
+.row .edit .ico { width: 15px; height: 15px; }
+.row.key .value { color: var(--green-700); }
+
+.verify {
+  display: flex; align-items: center; gap: 8px; margin: 10px 0 12px;
+  background: var(--green-50); border-radius: var(--r-sm); padding: 8px 10px;
+  font-size: 11.5px; color: var(--ink-600); line-height: 1.35;
+}
+.verify .ico { color: var(--green-600); flex: none; width: 18px; height: 18px; }
+.verify b { color: var(--ink-900); font-weight: 600; }
+
+.actions { display: flex; gap: 10px; margin-top: auto; }
+.actions .btn-ghost { width: 56px; padding: 0; flex: none; }
+.actions .btn-primary { flex: 1; }
